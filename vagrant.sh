@@ -15,6 +15,7 @@ then
    sudo apt-get install vagrant
    sudo vagrant box add ubuntu/trusty64
    sudo vagrant init ubuntu/trusty64
+   sed -i '/\end/i  config.vm.network "private_network", ip: "192.168.33.10"' Vagrantfile
    sudo vagrant up
 
 else
@@ -33,9 +34,10 @@ else
       echo installing vagrant
    fi
    sudo yum -y install https://releases.hashicorp.com/vagrant/1.8.1/vagrant_1.8.1_x86_64.rpm
-   mkdir ~/test-vagrant
-   cd ~/test-vagrant
-   vagrant init ubuntu/trusty64
+   sudo mkdir ~/test-vagrant
+   sudo cd ~/test-vagrant
+   sudo vagrant init ubuntu/trusty64
+   sed -i '/\end/i  config.vm.network "private_network", ip: "192.168.33.10"' Vagrantfile
    vagrant up
 
 fi
